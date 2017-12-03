@@ -3,9 +3,9 @@ phases:
   build:
     commands:
       -echo nothing to do yet
-  artifacts:
-    files:
-      -index.html
-      -images/*
-      -favicon.ico
-      -styles/main.css
+artifacts:
+  files:
+    -index.html
+    -images/*
+    -favicon.ico
+    -styles/main.css
