@@ -1,231 +1,110 @@
-/*
-  Theme colors
-    All selectors with colors that would need
-    to be changed for theme changes
-*/
+* { box-sizing:border-box; }
 
-/*
-  COLORS
-
-  Sky
-    rgb(52, 152, 219)
-
-  Dark Blue
-    rgb(44, 62, 80)
-
-  Grey
-    rgb(127, 140, 141)
-
-  Cloud
-    rgb(236, 240, 241)
-*/
-
-.background--skyBlue {
-  background-color: rgb(52, 152, 219);
+/* basic stylings ------------------------------------------ */
+body { 
+  background-color: #f4f5f7;
+}
+.container 		{ 
+  font-family:'Roboto';
+  width:600px; 
+  margin:30px auto 0; 
+  display:block; 
+  background:#f4f5f7;
+  padding:10px 50px 50px;
 }
 
-.color--skyBlue {
-  color: rgb(52, 152, 219);
+.footer 	{ text-align:center; }
+.footer a  { color:#53B2C8; }
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #f4f5f7;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
 }
 
-.color--cloud {
-  color: rgb(236, 240, 241);
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
 }
 
-.color--grey {
-  color: rgb(127, 140, 141);
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
 }
 
-.color--darkgrey {
-  color: rgb(44, 62, 80);
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
 }
 
-.section__example {
-  background-color: rgb(44, 62, 80);
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
 }
 
-/*
-  General Styles
-    These are styles to be inherited
-    through parent containers
-*/
-
-html {
-  font-size: 62.5%;
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
 }
 
-body {
-  font-family: 'Cardo', serif;
-  margin: 0;
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
 }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: .1rem;
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
 }
-
-/*
-  Helpers
-*/
-
-.margin--none {
-  margin: 0;
-}
-
-.overflow--auto {
-  overflow: auto;
-}
-
-
-/*
-  Sections
-*/
-
-.section {
-  font-size: 4.2rem;
-  min-height: 70vh;
-  position: relative;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.section--alignCentered {
-  text-align: center;
-}
-
-.section--description {
-  font-size: 2.8rem;
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
-}
-
-.section__description {
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  width: 50%;
-}
-
-.section__text--centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.section__exampleWrapper,
-.section__example {
-  display: inline-block;
-  height: 35rem;
-  width: 35rem;
-}
-
-.section__exampleWrapper {
-  margin-right: 4rem;
-}
-
-.section__example {
-  border-radius: 100%;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-}
-
-.section__example:active {
-  transition: 0.05s all;
-  width: 34rem;
-  height: 34rem;
-}
-
-.section__exampleTitle{
-  font-size: 3.4rem;
-  text-align: center;
-  text-transform: uppercase;
-  width: 90%;
-}
-
-.section__exampleImage {
-  opacity: 0.25;
-  width: 250%;
-  margin-left: -50%;
-  margin-top: -50%;
-}
-
-/*
-  Header
-*/
-
-.section__heading--largest {
-  float: left;
-  font-size: 5rem;
-  margin-left: 2rem;
-}
-
-.section--social {
-  float: right;
-  line-height: 10rem;
-  margin-right: 2rem;
-}
-
-.social {
-  margin-right: 0.75rem;
-}
-
-.socialWrapper:last-child .social {
-  margin-right: 0;
-}
-
-.socialWrapper {
-  display: inline-block;
-  font-size: 3rem;
-}
-
-
-/*
-  Modal
-*/
-
-.modal--closed {
-  display: none;
-}
-
-.modal--open {
-  display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-
-.modal__closeButton {
-  position: absolute;
-  right: 2rem;
-  top: 5rem;
-  font-size: 4rem;
-  z-index: 1;
-  curson: pointer;
-}
-
-.modal__text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 2.4rem;
-  padding: 2rem;
-  width: 66%;
-}
-
-.modal__link {
-  background-color: white;
-  border-radius: 4px;
-  padding: 0.4rem 1rem;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.modal__image {
-  opacity: 0.2;
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
 }
