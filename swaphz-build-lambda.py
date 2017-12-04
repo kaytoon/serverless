@@ -15,7 +15,7 @@ def lambda_handler(event, context):
         build_bucket = s3.Bucket(location["bucketName"])
         swaphz_zip = StringIO.StringIO()  
         build_bucket.download_fileobj(location["objectKey"], swaphz_zip)
-        gft
+        
         job = event.get("CodePipeline.job")
 
         if job:
