@@ -7,18 +7,15 @@ def lambda_handler(event, context):
     sns = boto3.resource('sns')
     topic = sns.Topic('arn:aws:sns:us-east-1:146648089768:swaphz-topic')
     location = {
-
         "bucketName": 'build-swaphz',
-            
         "objectKey": 'swaphzbuild.zip'
-            
      }
     try:
         swaphz_bucket = s3.Bucket('swaphz')
         build_bucket = s3.Bucket(location["bucketName"])
         swaphz_zip = StringIO.StringIO()  
         build_bucket.download_fileobj(location["objectKey"], swaphz_zip)
-        
+        gft
         job = event.get("CodePipeline.job")
 
         if job:
