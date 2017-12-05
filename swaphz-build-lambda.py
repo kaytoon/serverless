@@ -2,16 +2,14 @@ import boto3
 import StringIO
 import zipfile
 import mimetypes
+from botocore.client import Config
 def lambda_handler(event, context):
-    s3 = boto3.resource('s3')
+    s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
     sns = boto3.resource('sns')
     topic = sns.Topic('arn:aws:sns:us-east-1:146648089768:swaphz-topic')
     location = {
-
         "bucketName": 'build-swaphz',
-            
         "objectKey": 'swaphzbuild.zip'
-            
      }
     try:
         swaphz_bucket = s3.Bucket('swaphz')
